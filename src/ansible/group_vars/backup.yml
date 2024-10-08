@@ -7,8 +7,8 @@ flightdeck_groups:
 flightdeck_users:
   - name: "backup"
     group: "backup"
-    groups:
-      - "cron"
+#    groups:
+#      - "cron"
     home: "/home/backup"
 
 flightdeck_root_prompt: '\u@mysql-backup:\w# '

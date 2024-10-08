@@ -17,7 +17,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            ten7/mysql-backup
+            ghcr.io/zenithtecnologia/mysql-backup-docker
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}

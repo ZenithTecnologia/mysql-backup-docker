@@ -11,27 +11,26 @@
       notify:
         - clear caches
     - name: Install necessary software.
-      community.general.apk:
+      dnf:
         name: "{{ _packages | join(',') }}"
         state: present
         update_cache: yes
       notify:
-        - clear apk cache
+        - clear dnf cache
       vars:
         _packages:
-          - "mariadb-client"
-          - "openssh-client"
-          - "py3-boto3"
-          - "py3-botocore"
-          - "py3-chardet"
-          - "py3-jmespath"
-          - "py3-mysqlclient"
-          - "py3-pip"
-          - "py3-urllib3"
+          - "mariadb"
+          - "openssh-clients"
+          - "python3-chardet"
+          - "python3-jmespath"
+          - "python3-PyMySQL"
+          - "python3-urllib3"
     - name: Install the additional packages from pip
       pip:
         name:
           - "s3cmd"
+          - "boto3"
+          - "botocore"
         extra_args: "--no-cache-dir"
     - name: Deploy key scripts.
       template:
@@ -65,11 +64,8 @@
     - name: clear caches
       shell: >
         rm -rf {{ item }}
-      args:
-        warn: no
       loop:
         - "/tmp/*"
-        - "/var/cache/apk/*"
         - "/var/www/.composer/cache"
         - "/root/.ansible/tmp"
         - "/root/.cache"
