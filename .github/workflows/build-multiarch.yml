@@ -22,10 +22,11 @@ jobs:
             ghcr.io/zenithtecnologia/mysql-backup-docker
           tags: |
             type=ref,event=branch
+            type=ref,event=tag
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=sha
+            type=sha,format=long
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
