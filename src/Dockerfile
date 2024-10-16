@@ -5,13 +5,12 @@ LABEL mantainer=dev@zenithtecnologia.com.br
 ENV CNB_GROUP_ID=
 ENV CNB_USER_ID=
 ENV HOME=
-ENV VIRTUAL_ENV=
-ENV VIRTUAL_ENV_PROMPT=
 
 USER root
 WORKDIR /root
 
 RUN dnf repoquery podman-catatonit --location | tail -n1 | xargs rpm -Uvh --nodeps && \
+    dnf remove -y scl-utils && \
     dnf clean all && \
     rm -rf /var/cache/yum
 
@@ -31,7 +30,7 @@ RUN ansible-playbook -i /ansible/inventories/backup.yml /ansible/build.yml
 
 # Switch to the service account.
 USER backup
-WORKDIR /home/backup
+WORKDIR /
 ENV HOME=/home/backup
 
 ENTRYPOINT ["/usr/libexec/catatonit/catatonit", "--"]
