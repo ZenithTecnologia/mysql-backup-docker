@@ -19,6 +19,9 @@ RUN userdel -fr default
 # Update the package list and install Ansible.
 RUN pip install ansible
 
+# s3cmd dependencies
+RUN pip install botocore boto3
+
 # Copy the Ansible configuration files
 COPY ansible-hosts /etc/ansible/hosts
 COPY ansible.cfg /etc/ansible/ansible.cfg
