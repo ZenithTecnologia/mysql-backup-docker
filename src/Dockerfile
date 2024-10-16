@@ -17,10 +17,10 @@ RUN dnf repoquery podman-catatonit --location | tail -n1 | xargs rpm -Uvh --node
 RUN userdel -fr default
 
 # Update the package list and install Ansible.
-RUN pip install ansible
+RUN /opt/app-root/bin/python -m pip install ansible
 
 # s3cmd dependencies
-RUN pip install botocore boto3
+RUN /opt/app-root/bin/python -m pip install botocore boto3
 
 # Copy the Ansible configuration files
 COPY ansible-hosts /etc/ansible/hosts
