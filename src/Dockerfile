@@ -20,7 +20,7 @@ RUN userdel -fr default
 RUN /opt/app-root/bin/python -m pip install ansible
 
 # s3cmd dependencies
-RUN /opt/app-root/bin/python -m pip install botocore boto3
+RUN /opt/app-root/bin/python -m pip install PyMySQL[rsa,ed25519] botocore boto3
 
 # Copy the Ansible configuration files
 COPY ansible-hosts /etc/ansible/hosts

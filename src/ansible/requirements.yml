@@ -4,7 +4,7 @@ roles:
     version: rh-5.1.3
     name: ten7.flightdeck_base
   - src: https://github.com/ZenithTecnologia/mysql-backup
-    version: main
+    version: 1.0.2
     name: ten7.mysql_backup
 collections:
   - name: cloud.common
