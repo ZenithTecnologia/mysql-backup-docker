@@ -17,7 +17,7 @@ RUN dnf repoquery podman-catatonit --location | tail -n1 | xargs rpm -Uvh --node
 RUN userdel -fr default
 
 # Update the package list and install Ansible.
-RUN pip install ansible-core
+RUN pip install ansible
 
 # Copy the Ansible configuration files
 COPY ansible-hosts /etc/ansible/hosts
